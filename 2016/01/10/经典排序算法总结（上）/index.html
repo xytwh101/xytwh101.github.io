@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>经典排序算法总结（上） | 美凌阁</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="美凌阁">
+    <meta name="author" content="Tracy">
+    <meta name="description" content="Amber&Tracy" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="美凌阁" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/ML/" class="animsition-link">ML<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/paintings/" class="animsition-link">paintings<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/基础算法/" class="animsition-link">基础算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/心得体会/" class="animsition-link">心得体会<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/读书笔记/" class="animsition-link">读书笔记<small>(3)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/rm.ico" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">美凌阁</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/xytwh101/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/u/2709383861" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-01-10T10:57:21.000Z" itemprop="datePublished">
+          2016-01-10
+      </time>
+    
+    
+    | 
+    <a href='/tags/基础算法/'>基础算法</a>
+    
+    
+</span>
+                <h1>经典排序算法总结（上）</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p><strong>排序算法总结</strong><br>大二曾学过数据结构和常用算法，现在回忆起来还稍有印象。<br>经典的排序算法有<em>插入排序</em>、<em>计数排序</em>、<em>选择排序</em>、<em>堆排序</em>、<em>冒泡排序</em>、<em>快速排序</em>、<em>归并排序</em>、<em>基数排序</em>，现在来一一回忆。<br><a id="more"></a><br><strong>插入排序</strong><br>插入排序的思想就是，给定一组乱序的数，先将第一个数放进一个数据组中。再选出第二个数，与第一个数相比，顺序排好。再选出第三个数，与依次与前两个数相比，小于就放在之前。以此类推。</p>
+<p>最优复杂度：O(n)     顺序<br>最差复杂度：O(n2)   倒序<br><img src="http://my.csdn.net/uploads/201207/17/1342520948_8667.jpg" alt=""><br>代码如下：</p>
+<pre><code>for(int i=1;i&lt;a.length;i++){
+    int j=i-1;
+    //将取出数储存
+    int key=a[i];
+    while(j&gt;=0&amp;&amp;a[j]&gt;key){
+        a[j+1]=a[j];
+        a[j]=key;
+        j--;
+    }            
+}
+</code></pre><p><strong>冒泡排序</strong><br>最优复杂度：O(n)（改进）<br>复杂度：O(n2)（普通）<br>个人感觉和插入排序挺相似的，冒泡顾名思义，小泡比大泡先冒出水面。只需要选一个方向，然后顺序的选一个数，不断的往后选择相邻的数进行比较，位置不对就交换，直到最后一个数。</p>
+<p>代码如下：</p>
+<pre><code>//保证每个数都选择比较过
+for(int i=0;i&lt;a.length;i++){
+    //每次被比较的n-1个数
+    for(int j=0;j&lt;a.length-1;j++){
+        if(a[j]&gt;a[j+1]){
+            int c=a[j+1];
+            a[j+1]=a[j];
+            a[j]=c;
+            d++;
+        }
+    }
+}
+</code></pre><p>改进的方法可以设一个标签，用于记录每次排序停止的位置，因为第一次就可以确定最大值，每一次至少可以确定一个剩下的最大值。<br>代码如下：</p>
+<pre><code>int label=a.length-1;
+while(label&gt;0){
+    //每次被比较的n-1个数
+    int pos=0;
+    for(int j=0;j&lt;label;j++){
+        if(a[j]&gt;a[j+1]){
+            pos=j;                    
+            int c=a[j+1];
+            a[j+1]=a[j];
+            a[j]=c;
+            d++;                
+        }                            
+    }
+    label=pos;            
+}
+</code></pre><p><strong>快速排序</strong><br>最优复杂度：O(nlogn)（改进）<br>最差复杂度：O(n2)（普通）<br><img src="http://my.csdn.net/uploads/201207/20/1342782317_4426.jpg" alt=""><br><img src="http://my.csdn.net/uploads/201207/20/1342782329_8314.jpg" alt=""><br>代码如下：</p>
+<pre><code>public static int [] a={10,9,4,4,1,45,23,4,6};
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+
+    int high=a.length-1;  //8
+    int low=0;
+    quick(a,low,high);
+
+    for(int i=0;i&lt;a.length;i++){
+        System.out.println(a[i]);
+    }
+}
+
+private static void quick(int[] a, int low, int high) {
+    // TODO Auto-generated method stub
+    if(low&lt;high){
+        int  c=quicksort(a,low,high);
+            //递归用的好啊
+        quick(a, low, c-1);
+        quick(a, c+1, high);
+    }
+}
+
+private static int quicksort(int[] a,int low,int high) {
+    // TODO Auto-generated method stub
+    int first=a[low];  
+    while(low&lt;high){        
+        while(low&lt;high&amp;&amp;a[high]&gt;=first) {
+            high--;            
+        }        
+        int swap1=a[high];
+        a[high]=first;
+        a[low]=swap1;    
+        while(low&lt;high&amp;&amp;a[low]&lt;=first){
+            low++;
+        }        
+        int swap2=a[low];
+        a[low]=first;
+        a[high]=swap2;            
+    }
+
+    QuickSort.a=a;
+    return low;
+}
+</code></pre><p><strong>归并排序</strong><br>复杂度：O(nlgn)<br>将两组数据按大小排列成一组数据，如果事先给出了一组乱序数据需要排列，就可以把每一个单个的数据看成是一组，组合成两倍于原长的数据，再选择2组2倍长度的数据进行组合，直到最终排列完成。<br><img src="http://my.csdn.net/uploads/201207/21/1342842633_6751.jpg" alt=""></p>
+<p>代码实现起来比较费劲，尝试了好久，还是参考了下牛人的才能写出：</p>
+<pre><code>public static void sort(int[] data, int left, int right) {
+        // TODO Auto-generated method stub
+        if(left&lt;right){
+            //找出中间索引
+            int center=(left+right)/2;
+            //对左边数组进行递归
+            sort(data,left,center);
+            //对右边数组进行递归
+            sort(data,center+1,right);
+            //合并
+            merge(data,left,center,right);
+
+        }
+    }
+    public static void merge(int[] data, int left, int center, int right) {
+        // TODO Auto-generated method stub
+        int [] tmpArr=new int[data.length];
+        int mid=center+1;
+        //third记录中间数组的索引
+        int third=left;
+        int tmp=left;
+        while(left&lt;=center&amp;&amp;mid&lt;=right){
+            //从两个数组中取出最小的放入中间数组
+            if(data[left]&lt;=data[mid]){
+                tmpArr[third++]=data[left++];
+            }else{
+                tmpArr[third++]=data[mid++];
+            }
+        }
+        //剩余部分依次放入中间数组
+        while(mid&lt;=right){
+            tmpArr[third++]=data[mid++];
+        }
+        while(left&lt;=center){
+            tmpArr[third++]=data[left++];
+        }
+        //将中间数组中的内容复制回原数组
+        while(tmp&lt;=right){
+            data[tmp]=tmpArr[tmp++];
+        }
+        System.out.println(Arrays.toString(data));
+    }
+</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2016/01/17/Adaboost算法/" style="float: left;">
+        ← Adaboost算法
+    </a>
+    
+    
+    <a class="pull-right" href="/2016/01/01/PCA/">
+        PCA →
+    </a>
+    
+</nav>
+
+        <div class="share"><div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/01/10/经典排序算法总结（上）/" data-title="经典排序算法总结（上）" data-url="http://www.tracy-rm.com/2016/01/10/经典排序算法总结（上）/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tracy-rm"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Tracy. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/xytwh101/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/u/2709383861" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2345e1fb8702c5a94ab43ee89562d691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>

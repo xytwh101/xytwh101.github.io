@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>Coursera机器学习公开课- - - 逻辑回归和过拟合问题的解决 | 美凌阁</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="美凌阁">
+    <meta name="author" content="Tracy">
+    <meta name="description" content="Amber&Tracy" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="美凌阁" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/ML/" class="animsition-link">ML<small>(8)</small></a></li>
+				    
+				    <li><a href="/categories/paintings/" class="animsition-link">paintings<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/基础算法/" class="animsition-link">基础算法<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/心得体会/" class="animsition-link">心得体会<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/读书笔记/" class="animsition-link">读书笔记<small>(3)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/rm.ico" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">美凌阁</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/xytwh101/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/u/2709383861" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-12-07T12:17:07.000Z" itemprop="datePublished">
+          2015-12-07
+      </time>
+    
+    
+    | 
+    <a href='/tags/ML/'>ML</a>
+    
+    
+</span>
+                <h1>Coursera机器学习公开课- - - 逻辑回归和过拟合问题的解决</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>早就有把自己这段时间的所学整理出来的想法，但是一直没有提笔的行动，在此先给懒惰的自己一个耳光。</p>
+<pre><code>但终其原因还是自己：
+1.   没有规划好时间，缺乏一个总体的计划；
+2.   好奇心过头，听到一点新鲜事就要花大把时间百度一番；
+3.   做事不能持之以恒，从暑假便开始学习机器学习，虽中间经历安卓的项目  以及公司里面的一些事，也不能隔了小半年才写出第一篇笔记。
+
+幸好，剩下的时间都属于自己，希望能在这几个月里弥补之前的过失。
+</code></pre><p>####闲话不多说，逻辑回归是用于二分类问题的非常经典的方法，是机器学习中非常常用的回归工具之一。<br><a id="more"></a><br>方法的目标就是为了学习到目标函数中参数的<img src="http://www.forkosh.com/mathtex.cgi? \mathit{\Theta }">：</p>
+<p><img src="http://my.csdn.net/uploads/201207/07/1341657968_4370.jpg" alt=""></p>
+<p>其中g(z)为逻辑回归函数，目的是使得目标值呈现为0或1两个分类。</p>
+<p>那么LR的损失函数构造为：<br><img src="http://my.csdn.net/uploads/201207/07/1341650794_3936.jpg" alt=""></p>
+<p>函数h是y=1时的概率，1-h是y=0时的概率。由于y只能取0或1，所以损失函数可以写成：<br><img src="http://my.csdn.net/uploads/201207/07/1341658176_1292.jpg" alt=""></p>
+<p>公式所表达的就是实际值y与预测值h越是接近，损失函数的值就越小，公式已经清晰的呈现出来了，剩下的就是最小化这个公式，一般来说使用梯度下降的方法。<br><img src="http://my.csdn.net/uploads/201207/07/1341658851_7555.jpg" alt=""></p>
+<p>顺便再附上Python实现Gradient Descent 的代码：</p>
+<pre><code>def gradAscent(dataMatIn,classLabels):
+dataMatrix=mat(dataMatIn)
+labelMat=mat(classLabels).transpose()
+m,n=shape(dataMatrix)
+alpha=0.001
+maxCycles=5000
+weights=ones((n,1))
+for k in range(maxCycles):  #0-499
+    h = sigmoid(dataMatrix*weights)     #matrix mult
+    error = (h-labelMat)              #vector subtraction
+    weights = weights - alpha * dataMatrix.transpose()* error #theta的计算
+return weights
+</code></pre><p>这样就可以通过导数的计算来得到梯度。当然，如果在样本很多的情况下，逐一更新每一个参数将会浪费大量的时间与耗费大量的计算资源。所以有些时候使用随机梯度下降算法，性价比会更高，结果虽然得不到最优，但也基本上出现在最优值附近。</p>
+<p>随机梯度下降的思想是每次随机选取一个或几个样本点来更新参数，直接附上代码：</p>
+<pre><code>def stocGradAscent1(dataMatrix, classLabels, numIter=500):
+m,n = shape(dataMatrix)
+weights = ones(n)   #initialize to all ones
+for j in range(numIter):
+    dataIndex = []
+    for i in range(m):
+        dataIndex.append(i)
+    for i in range(m):
+        alpha = 4/(1.0+j+i)+0.0001    #apha decreases with iteration, does not 
+        randIndex = int(random.uniform(0,len(dataIndex)))#go to 0 because of the constant
+        h = sigmoid(sum(dataMatrix[randIndex]*weights))
+        error = classLabels[randIndex] - h
+        weights = weights + alpha * error * dataMatrix[randIndex]
+        del(dataIndex[randIndex])
+return weights
+</code></pre><p>####逻辑回归方法就总结到这，一下解决一下常遇到的过拟合问题。</p>
+<p>简单说，用两个方法可以解决过拟合：</p>
+<ul>
+<li><p>减少feature数量<br>过多的特征会增加过多不必要的判断，而且很容易影响到一些比较关键的特征，本来不需要考虑到的却非要考虑，因此减少特征是一种方法。</p>
+</li>
+<li><p>规格化<br>留下所有的特征，但是需要在特征前定义一个规格化参数，对于一下没什么用的特征给定一个非常小的参数，弱化他在训练模型时的作用。</p>
+</li>
+</ul>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2015/12/07/镇店之宝——初篇/" style="float: left;">
+        ← 镇店之宝——初篇
+    </a>
+    
+    
+</nav>
+
+        <div class="share"><div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2015/12/07/Coursera机器学习公开课-逻辑回归和过拟合问题的解决/" data-title="Coursera机器学习公开课- - - 逻辑回归和过拟合问题的解决" data-url="http://www.tracy-rm.com/2015/12/07/Coursera机器学习公开课-逻辑回归和过拟合问题的解决/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tracy-rm"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Tracy. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/xytwh101/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/u/2709383861" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2345e1fb8702c5a94ab43ee89562d691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>
