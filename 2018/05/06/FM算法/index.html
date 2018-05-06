@@ -227,7 +227,7 @@
 <h2 id="特征组合"><a href="#特征组合" class="headerlink" title="特征组合"></a>特征组合</h2><p>一般线性模型并未考虑到特征关联：</p>
 <script type="math/tex; mode=display">y = \omega_{0} + \sum_{i=1}^{n}\omega_{i}x_{i}</script><p>多项式模型，包含了特征组合：</p>
 <script type="math/tex; mode=display">y = \omega_{0} + \sum_{i=1}^{n}\omega_{i}x_{i} + \sum_{i=1}^{n-1}\sum_{j=i+1}^{j=n}\omega_{ij}x_{i}x_{j}</script><p>模型涉及的参数量为：$1 + n + \frac{n\left(n-1\right)}{2} = \frac{1}{2}(n^2 + n + 2)$</p>
-<p>对于$x<em>{i},x</em>{j}$都不为0且规模较大的数据效率较低。</p>
+<p>对于$x_{i},x_{j}$都不为0且规模较大的数据效率较低。</p>
 <h2 id="FM原理"><a href="#FM原理" class="headerlink" title="FM原理"></a>FM原理</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>为了解决上述由于数据稀疏引起的训练不足的问题，我们为每个特征维度$x_{i}$引入一个辅助向量：</p>
 <script type="math/tex; mode=display">V_{i} = (v_{i1}, v_{i2}, ... , v_{ik})^{T} \in \mathbb{R}^{k}, i = 1,2,3,...,n</script><p>交互矩阵W可以表示为：</p>
 <script type="math/tex; mode=display">W = 
@@ -254,8 +254,8 @@
 <p>因此求解W的问题就转化为求解V的问题。</p>
 <p>理论分析中要求参数k足够的大，但在高度稀疏数据的场景中，由于 没有足够的样本，因此k通常取较小的值。事实上，对参数k的限制，在一定程度上可以提高模型的泛化能力。</p>
 <p>带入式中：</p>
-<script type="math/tex; mode=display">y = \omega_{0} + \sum_{i=1}^{n}\omega_{i}x_{i} + \sum_{i=1}^{n-1}\sum_{j=i+1}^{j=n}(V_{i}^{T}V_{j}) x_{i}x_{j}</script><h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><h4 id="multilinearity性质"><a href="#multilinearity性质" class="headerlink" title="multilinearity性质"></a>multilinearity性质</h4><p>记$\Theta = (\omega<em>{0}, \omega</em>{1}, …, \omega<em>{n}, v</em>{11}, v<em>{12}, …, v</em>{nk})$表示模型的所有参数，存在任意$\theta \in \Theta$，使得：</p>
-<script type="math/tex; mode=display">f(x) = g(x) + \theta h(x)</script><p>$\theta$可能取值为1、$\omega<em>{l}$、$v</em>{lm}$，相对应的偏导为：</p>
+<script type="math/tex; mode=display">y = \omega_{0} + \sum_{i=1}^{n}\omega_{i}x_{i} + \sum_{i=1}^{n-1}\sum_{j=i+1}^{j=n}(V_{i}^{T}V_{j}) x_{i}x_{j}</script><h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><h4 id="multilinearity性质"><a href="#multilinearity性质" class="headerlink" title="multilinearity性质"></a>multilinearity性质</h4><p>记$\Theta = (\omega_{0}, \omega_{1}, …, \omega_{n}, v_{11}, v_{12}, …, v_{nk}) 表示模型的所有参数，存在任意 \theta \in \Theta$，使得：</p>
+<script type="math/tex; mode=display">f(x) = g(x) + \theta h(x)</script><p>$\theta$可能取值为$1, \omega_{l}, v_{lm}$，相对应的偏导为：</p>
 <script type="math/tex; mode=display">\frac{\partial f(x)}{\partial \theta} = 
 \left\{\begin{matrix}
  1,&\theta = \omega_{0}\\ 
