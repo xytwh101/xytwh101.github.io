@@ -17,12 +17,12 @@
 <!--<![endif]-->
 
 <head>
-  <title>ListNet算法 | 美凌阁</title>
+  <title>ListNet算法 | Rivendell</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="美凌阁">
+    <meta name="generator" content="Rivendell">
     <meta name="author" content="Tracy">
     <meta name="description" content="Amber&Tracy" />
     <meta name="keywords" content="" />
@@ -30,7 +30,7 @@
     <!-- Favicon, (keep icon in root folder) -->
     <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
-    <link rel="alternate" href="/atom.xml" title="美凌阁" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Rivendell" type="application/atom+xml">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
 	
     <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
@@ -171,7 +171,7 @@
                     <!-- Info-bar -->
                     <nav>
                         <ul class="nav">
-                            <li><a href="/" class="animsition-link">美凌阁</a></li>
+                            <li><a href="/" class="animsition-link">Rivendell</a></li>
                             <li class="nolink"><span>Always </span>Creative.</li>
                             
                             <li><a href="https://github.com/xytwh101/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
@@ -223,8 +223,9 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h2 id="ListWise方法"><a href="#ListWise方法" class="headerlink" title="ListWise方法"></a>ListWise方法</h2><p>listWise方法是将一次请求的排序结果作为一条样本进行训练，所有请求可以表示为：$Q= \left ( q^{\left (1\right )}, q^{\left (2\right )}, … , q^{\left (m\right )} \right )$，每一个请求中的文档可以用$d^{\left (i\right )}= \left ( d<em>{1}^{\left (i\right )}, d</em>{2}^{\left (i\right )}, … , d<em>{n^{i}}^{\left (i\right )} \right )$，对应每个文档会有一个相应的得分$y^{\left (i\right )}= \left ( y</em>{1}^{\left (i\right )}, y<em>{2}^{\left (i\right )}, … , y</em>{n^{i}}^{\left (i\right )} \right )$，每次请求的特征列表$x^{\left (i\right )}= \left ( x<em>{1}^{\left (i\right )}, x</em>{2}^{\left (i\right )}, … , x_{n^{i}}^{\left (i\right )} \right )$</p>
-
+<h2 id="ListWise方法"><a href="#ListWise方法" class="headerlink" title="ListWise方法"></a>ListWise方法</h2><p>ListWise方法是将一次请求的list of objects作为一条样本进行训练，所有请求可以表示为：$Q= \left ( q^{\left (1\right )}, q^{\left (2\right )}, … , q^{\left (m\right )} \right )$，每一个请求中的文档可以用$d^{\left (i\right )}= \left ( d_{1}^{\left (i\right )}, d_{2}^{\left (i\right )}, … , d_{n^{i}}^{\left (i\right )} \right )$其中$d_{j}^{(i)}$表示第j个文档、n表示$d^{(i)}$的数量，对应每个文档会有一个相应的得分$y^{\left (i\right )}= \left ( y_{1}^{\left (i\right )}, y_{2}^{\left (i\right )}, … , y_{n^{i}}^{\left (i\right )} \right )$，$x_{j}^{(i)} = \Psi (q^{(i)},d_{j}^{(i)})$表示每个query-document对$(q^{(i)},d_{j}^{(i)}),i = 1,2,…,m;j=1,2,…,n^{(i)}$的特征向量，每次请求的特征列表$x^{\left (i\right )}= \left ( x_{1}^{\left (i\right )}, x_{2}^{\left (i\right )}, … , x_{n^{i}}^{\left (i\right )} \right )$及对应的得分$y^{\left (i\right )}= \left ( y_{1}^{\left (i\right )}, y_{2}^{\left (i\right )}, … , y_{n^{i}}^{\left (i\right )} \right )$，对任意的$x^{(i)}$使得$z^{(i)} = (f(x_{1}^{(i)}),…,f(x_{n^{(i)}}^{(i)}))$，形式化最小化训练数据的损失得出损失函数：</p>
+<script type="math/tex; mode=display">\sum _{i=1}^{m}L(y^{(i)},z^{(i)})</script><h2 id="排列模型"><a href="#排列模型" class="headerlink" title="排列模型"></a>排列模型</h2><p>$\pi = &lt;\pi(1),\pi(2),…,\pi(n)&gt;$表示一次排列，$\pi(j)$表示排列在位置 $j$，所有可能的数量为n的排列的组合用$\Omega_{n}$表示。经过ranking模型的排序后，我们使用$s = (s_{1},s_{2},…,s_{n})$表示得分。</p>
+<h3 id="定义一"><a href="#定义一" class="headerlink" title="定义一"></a>定义一</h3><h2 id="top-k-概率"><a href="#top-k-概率" class="headerlink" title="top k 概率"></a>top k 概率</h2>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
