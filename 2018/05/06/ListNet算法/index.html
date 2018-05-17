@@ -225,7 +225,7 @@
       		<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
 <h2 id="ListWise方法"><a href="#ListWise方法" class="headerlink" title="ListWise方法"></a>ListWise方法</h2><p>ListWise方法是将一次请求的list of objects作为一条样本进行训练，所有请求可以表示为：$Q= \left ( q^{\left (1\right )}, q^{\left (2\right )}, … , q^{\left (m\right )} \right )$，每一个请求中的文档可以用$d^{\left (i\right )}= \left ( d_{1}^{\left (i\right )}, d_{2}^{\left (i\right )}, … , d_{n^{i}}^{\left (i\right )} \right )$其中$d_{j}^{(i)}$表示第j个文档、n表示$d^{(i)}$的数量，对应每个文档会有一个相应的得分$y^{\left (i\right )}= \left ( y_{1}^{\left (i\right )}, y_{2}^{\left (i\right )}, … , y_{n^{i}}^{\left (i\right )} \right )$，$x_{j}^{(i)} = \Psi (q^{(i)},d_{j}^{(i)})$表示每个query-document对$(q^{(i)},d_{j}^{(i)}),i = 1,2,…,m;j=1,2,…,n^{(i)}$的特征向量，每次请求的特征列表$x^{\left (i\right )}= \left ( x_{1}^{\left (i\right )}, x_{2}^{\left (i\right )}, … , x_{n^{i}}^{\left (i\right )} \right )$及对应的得分$y^{\left (i\right )}= \left ( y_{1}^{\left (i\right )}, y_{2}^{\left (i\right )}, … , y_{n^{i}}^{\left (i\right )} \right )$，对任意的$x^{(i)}$使得$z^{(i)} = (f(x_{1}^{(i)}),…,f(x_{n^{(i)}}^{(i)}))$，形式化最小化训练数据的损失得出损失函数：</p>
 <script type="math/tex; mode=display">\sum _{i=1}^{m}L(y^{(i)},z^{(i)})</script><h2 id="排列分布"><a href="#排列分布" class="headerlink" title="排列分布"></a>排列分布</h2><p>$\pi = &lt;\pi(1),\pi(2),…,\pi(n)&gt;$表示一次排列，$\pi(j)$表示排列在位置 $j$，所有可能的数量为n的排列的组合用$\Omega_{n}$表示。经过ranking模型的排序后，我们使用$s = (s_{1},s_{2},…,s_{n})$表示得分。</p>
-<h3 id="定义一"><a href="#定义一" class="headerlink" title="定义一"></a>定义一</h3><p>$\pi$表示某一个排列，$\phi(.)$是一个值域为正数的单调递增函数。对于某一个排列$\pi$以及相应的得分s，定义排列的概率为：</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>$\pi$表示某一个排列，$\phi(.)$是一个值域为正数的单调递增函数。对于某一个排列$\pi$以及相应的得分s，定义排列的概率为：</p>
 <script type="math/tex; mode=display">P_{s}(\pi)=\prod_{j=1}^{n}\frac{\phi(s_{\pi(j)})}{\sum_{k=j}^{n}\phi(s_{\pi(k)})}</script><p>其中，$s_{\pi(j)}$表示排列$\pi$位于位置j的对象的得分。<br>以上公式的性质：</p>
 <ul>
 <li>所有排列的概率之和为1</li>
@@ -234,14 +234,11 @@
 <li>如果$\phi(x)=ax$是一个线性函数，可以保证$p_{s}(\pi)$缩放不变性</li>
 <li>如果$\phi(x)=exp(x)$是一个指数函数，可以保证$p_{s}(\pi)$平移不变性</li>
 </ul>
-<p>一个简单的例子，考虑只有三个object {1, 2, 3}且得分为$s = (s_{1}, s_{2}, s_{3})$的两个排列$\pi=<1, 3="" 2,=""> 和 \pi^{‘}=<3, 1="" 2,="">$，计算后的P如下所示：</3,></1,></p>
+<p>一个简单的例子，考虑只有三个object {1, 2, 3}且得分为$s = (s_{1}, s_{2}, s_{3})$的两个排列$\pi=<1, 3="" 2,="">$ 和 $\pi^{‘}=<3, 1="" 2,="">$，计算后的P如下所示：</3,></1,></p>
 <script type="math/tex; mode=display">P_{s}(\pi)=\frac{\phi(s_{1})}{\phi(s_{1})+\phi(s_{2})+\phi(s_{3})}\cdot\frac{\phi(s_{2})}{\phi(s_{2})+\phi(s_{3})}\cdot\frac{\phi(s_{3})}{\phi(s_{3})}</script><script type="math/tex; mode=display">P_{s}(\pi^{'})=\frac{\phi(s_{3})}{\phi(s_{1})+\phi(s_{2})+\phi(s_{3})}\cdot\frac{\phi(s_{2})}{\phi(s_{2})+\phi(s_{1})}\cdot\frac{\phi(s_{1})}{\phi(s_{1})}</script><h2 id="top-k-概率"><a href="#top-k-概率" class="headerlink" title="top k 概率"></a>top k 概率</h2><p>全排列一共有$A_{n}^{n}$种组合，计算时间复杂度为$O(n*n!)$，因此只考虑top-k的排列数，计算一个排列的概率的时候就不是计算到结尾，而是计算到第k个元素。</p>
 <script type="math/tex; mode=display">P_{s}(g_{k}(j_{1},j_{2},...,j_{k}))=\prod_{t=1}^{k}\frac{\phi(s_{j_{t}})}{\sum_{l=t}^{n}\phi(s_{j_{l}})}</script><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>交叉熵：</p>
-<script type="math/tex; mode=display">L(y^{i},z^{i})=-\sum P_{y^{i}}(g)log(P_{z^{i}}(g))$$(中间项为期望值，右边项为实际值)
-
-
-梯度下降：
-$$\Delta \omega = \frac{\delta P_{z^{i}(f_{\omega})}(g)}{\delta \omega} \frac{P_{y^{(i)}}(g)}{P_{z^(i)(f_{\omega})}(g)}</script>
+<script type="math/tex; mode=display">L(y^{i},z^{i})=-\sum P_{y^{i}}(g)log(P_{z^{i}}(g))</script><p>梯度下降：</p>
+<script type="math/tex; mode=display">\Delta \omega = \frac{\delta P_{z^{i}(f_{\omega})}(g)}{\delta \omega} \frac{P_{y^{(i)}}(g)}{P_{z^(i)(f_{\omega})}(g)}</script>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
