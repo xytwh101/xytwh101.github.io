@@ -238,7 +238,7 @@
 <script type="math/tex; mode=display">P_{s}(\pi)=\frac{\phi(s_{1})}{\phi(s_{1})+\phi(s_{2})+\phi(s_{3})}\cdot\frac{\phi(s_{2})}{\phi(s_{2})+\phi(s_{3})}\cdot\frac{\phi(s_{3})}{\phi(s_{3})}</script><script type="math/tex; mode=display">P_{s}(\pi^{'})=\frac{\phi(s_{3})}{\phi(s_{1})+\phi(s_{2})+\phi(s_{3})}\cdot\frac{\phi(s_{2})}{\phi(s_{2})+\phi(s_{1})}\cdot\frac{\phi(s_{1})}{\phi(s_{1})}</script><h2 id="top-k-概率"><a href="#top-k-概率" class="headerlink" title="top k 概率"></a>top k 概率</h2><p>全排列一共有$A_{n}^{n}$种组合，计算时间复杂度为$O(n*n!)$，因此只考虑top-k的排列数，计算一个排列的概率的时候就不是计算到结尾，而是计算到第k个元素。</p>
 <script type="math/tex; mode=display">P_{s}(g_{k}(j_{1},j_{2},...,j_{k}))=\prod_{t=1}^{k}\frac{\phi(s_{j_{t}})}{\sum_{l=t}^{n}\phi(s_{j_{l}})}</script><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>交叉熵：</p>
 <script type="math/tex; mode=display">L(y^{i},z^{i})=-\sum P_{y^{i}}(g)log(P_{z^{i}}(g))</script><p>梯度下降：</p>
-<script type="math/tex; mode=display">\Delta \omega = \frac{\delta P_{z^{i}(f_{\omega})}(g)}{\delta \omega} \frac{P_{y^{(i)}}(g)}{P_{z^(i)(f_{\omega})}(g)}</script>
+<script type="math/tex; mode=display">\Delta \omega = \frac{d P_{z^{i}(f_{\omega})}(g)}{d \omega} \frac{P_{y^{(i)}}(g)}{P_{z^(i)(f_{\omega})}(g)}</script>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
