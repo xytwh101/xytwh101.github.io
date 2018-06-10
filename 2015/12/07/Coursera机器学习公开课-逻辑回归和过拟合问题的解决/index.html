@@ -118,6 +118,8 @@
 				  	
 				    <li><a href="/categories/ML/" class="animsition-link">ML<small>(9)</small></a></li>
 				    
+				    <li><a href="/categories/RL/" class="animsition-link">RL<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/paintings/" class="animsition-link">paintings<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/基础算法/" class="animsition-link">基础算法<small>(1)</small></a></li>
@@ -229,7 +231,8 @@
 3.   做事不能持之以恒，从暑假便开始学习机器学习，虽中间经历安卓的项目  以及公司里面的一些事，也不能隔了小半年才写出第一篇笔记。
 
 幸好，剩下的时间都属于自己，希望能在这几个月里弥补之前的过失。
-</code></pre><p>####闲话不多说，逻辑回归是用于二分类问题的非常经典的方法，是机器学习中非常常用的回归工具之一。<br><a id="more"></a><br>方法的目标就是为了学习到目标函数中参数的<img src="http://www.forkosh.com/mathtex.cgi? \mathit{\Theta }">：</p>
+</code></pre><h4 id="闲话不多说，逻辑回归是用于二分类问题的非常经典的方法，是机器学习中非常常用的回归工具之一。"><a href="#闲话不多说，逻辑回归是用于二分类问题的非常经典的方法，是机器学习中非常常用的回归工具之一。" class="headerlink" title="闲话不多说，逻辑回归是用于二分类问题的非常经典的方法，是机器学习中非常常用的回归工具之一。"></a>闲话不多说，逻辑回归是用于二分类问题的非常经典的方法，是机器学习中非常常用的回归工具之一。</h4><a id="more"></a>
+<p>方法的目标就是为了学习到目标函数中参数的<img src="http://www.forkosh.com/mathtex.cgi? \mathit{\Theta }">：</p>
 <p><img src="http://my.csdn.net/uploads/201207/07/1341657968_4370.jpg" alt=""></p>
 <p>其中g(z)为逻辑回归函数，目的是使得目标值呈现为0或1两个分类。</p>
 <p>那么LR的损失函数构造为：<br><img src="http://my.csdn.net/uploads/201207/07/1341650794_3936.jpg" alt=""></p>
@@ -265,8 +268,7 @@ for j in range(numIter):
         weights = weights + alpha * error * dataMatrix[randIndex]
         del(dataIndex[randIndex])
 return weights
-</code></pre><p>####逻辑回归方法就总结到这，一下解决一下常遇到的过拟合问题。</p>
-<p>简单说，用两个方法可以解决过拟合：</p>
+</code></pre><h4 id="逻辑回归方法就总结到这，一下解决一下常遇到的过拟合问题。"><a href="#逻辑回归方法就总结到这，一下解决一下常遇到的过拟合问题。" class="headerlink" title="逻辑回归方法就总结到这，一下解决一下常遇到的过拟合问题。"></a>逻辑回归方法就总结到这，一下解决一下常遇到的过拟合问题。</h4><p>简单说，用两个方法可以解决过拟合：</p>
 <ul>
 <li><p>减少feature数量<br>过多的特征会增加过多不必要的判断，而且很容易影响到一些比较关键的特征，本来不需要考虑到的却非要考虑，因此减少特征是一种方法。</p>
 </li>

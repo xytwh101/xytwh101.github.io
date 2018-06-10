@@ -118,6 +118,8 @@
 				  	
 				    <li><a href="/categories/ML/" class="animsition-link">ML<small>(9)</small></a></li>
 				    
+				    <li><a href="/categories/RL/" class="animsition-link">RL<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/paintings/" class="animsition-link">paintings<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/基础算法/" class="animsition-link">基础算法<small>(1)</small></a></li>
@@ -249,7 +251,8 @@
 <h4 id="FTRL-Proximal"><a href="#FTRL-Proximal" class="headerlink" title="FTRL-Proximal"></a>FTRL-Proximal</h4><p>学习率计算：<br><img src="http://7xoyo9.com1.z0.glb.clouddn.com/FTRL4.png" width="25%" height="25%"></p>
 <p>推荐一个python库，里面继承了ftrl-proximal,ogd等在线学习算法：</p>
 <p><a href="https://github.com/jeongyoonlee/Kaggler" target="_blank" rel="external">https://github.com/jeongyoonlee/Kaggler</a></p>
-<h4 id="FTRL-Proximal实验"><a href="#FTRL-Proximal实验" class="headerlink" title="FTRL-Proximal实验"></a>FTRL-Proximal实验</h4><h5 id="参数α"><a href="#参数α" class="headerlink" title="参数α"></a>参数α</h5><table>
+<h4 id="FTRL-Proximal实验"><a href="#FTRL-Proximal实验" class="headerlink" title="FTRL-Proximal实验"></a>FTRL-Proximal实验</h4><h5 id="参数α"><a href="#参数α" class="headerlink" title="参数α"></a>参数α</h5><div class="table-container">
+<table>
 <thead>
 <tr>
 <th style="text-align:center">alpha</th>
@@ -321,6 +324,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="http://7xoyo9.com1.z0.glb.clouddn.com/ftrl_alpha.png" width="75%" height="75%"></p>
 <p>实现代码</p>
 <pre><code>import kaggler.online_model as onlineModel
@@ -333,7 +337,7 @@ clf = onlineModel.FTRL(a=.1,  # alpha in the per-coordinate rate
                        epoch=1,  # number of epochs
                        interaction=True)  # use feature interaction or not
 
-X, y = load_svmlight_file(&apos;horseColicTraining.sparse&apos;)
+X, y = load_svmlight_file(&#39;horseColicTraining.sparse&#39;)
 clf.fit(X, y)
 p = clf.predict(X)
 </code></pre>

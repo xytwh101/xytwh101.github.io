@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: paintings | Rivendell</title>
+  <title>Elementary Reinforcement Learning | Rivendell</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -204,87 +204,181 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/rivendell_7.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/12/11/镇店之宝-（三）/">镇店之宝-（三）</a></h4>
-                            
-                            <p><time datetime="2015-12-11T02:34:31.000Z"><a href="/2015/12/11/镇店之宝-（三）/">2015-12-11</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/12/09/镇店之宝-（二）/">镇店之宝--（二）</a></h4>
-                            
-                            <p><time datetime="2015-12-09T14:49:22.000Z"><a href="/2015/12/09/镇店之宝-（二）/">2015-12-09</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/12/07/镇店之宝——初篇/">镇店之宝——初篇</a></h4>
-                            
-                            <p><time datetime="2015-12-07T12:28:42.000Z"><a href="/2015/12/07/镇店之宝——初篇/">2015-12-07</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-06-10T03:14:49.000Z" itemprop="datePublished">
+          2018-06-10
+      </time>
+    
+    
+    | 
+    <a href='/tags/RL/'>RL</a>
+    
+    
+</span>
+                <h1>Elementary Reinforcement Learning</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>达则兼济天下，穷则独善其身</p>
+<h2 id="强化学习的要素"><a href="#强化学习的要素" class="headerlink" title="强化学习的要素"></a>强化学习的要素</h2><ul>
+<li>奖励（Reward）</li>
+<li>个体（Agent）</li>
+<li>环境（Environment）</li>
+<li>马儿可夫属性（Markov Property）</li>
+<li>序列决策</li>
+</ul>
+<h4 id="强化学习是由以上要素组成，表现形式为Agent在给定环境和时间-t-情况下，不断的采取行为-A-t-改变环境状态并获得奖励，来不断增强下一步行为的过程。"><a href="#强化学习是由以上要素组成，表现形式为Agent在给定环境和时间-t-情况下，不断的采取行为-A-t-改变环境状态并获得奖励，来不断增强下一步行为的过程。" class="headerlink" title="强化学习是由以上要素组成，表现形式为Agent在给定环境和时间$t$ 情况下，不断的采取行为$A_{t}$ 改变环境状态并获得奖励，来不断增强下一步行为的过程。"></a>强化学习是由以上要素组成，表现形式为Agent在给定环境和时间$t$ 情况下，不断的采取行为$A_{t}$ 改变环境状态并获得奖励，来不断增强下一步行为的过程。</h4><p>在<em>t</em> 时刻有一个对环境的评估$O_{t}$，个体做出一个行为$A_{t}$，并从当前环境$S_{t}$，中获取一个奖励$R_{t+1}$，该奖励可以理解为离开$S_{t}$获得的即时奖励。此时，环境接收到个体的动作$A_{t}$，更新环境进入$S_{t+1}$，同时个体得到下一个观测$O_{t+1}$。<br>强化学习的样本就是由一系列观测、个体、状态组合而成的:</p>
+<script type="math/tex; mode=display">H_{t} = O_{0}, R_{0}, A_{0}, O_{1}, R_{1}, A_{1}, ..., O_{n}, R_{n}, A_{n}</script><h2 id="强化学习个体的组成"><a href="#强化学习个体的组成" class="headerlink" title="强化学习个体的组成"></a>强化学习个体的组成</h2><ul>
+<li>策略（Policy）<ul>
+<li>策略代表着个体的行为</li>
+<li>是状态到行为的映射</li>
+<li>表示为：$a = \pi (s)$</li>
+<li>随机策略表示为：$\pi (a|s) = \mathbb{P}[A_{t}=a|S_{t}=s]$</li>
+</ul>
+</li>
+<li>价值函数（Value Function）<ul>
+<li>值函数是对未来奖励的预测</li>
+<li>用来预测当前状态的好与坏的程度</li>
+<li>因此某一次选择的action的价值为当前奖励和后续所有奖励的累加:</li>
+<li>$v(\pi) = \mathbb{E}_{\pi}[R_{t+1} + \gamma R_{t+2} + \gamma ^{2}R_{t+2} + …]$</li>
+<li>由于对未来的不确定性，使用discount future reward来表示$R_{t} = r_{t} + \gamma R_{t+1}$ </li>
+</ul>
+</li>
+<li>模型（Model）<ul>
+<li>模型用于预测环境</li>
+<li>给定当前状态和动作，预测下一个状态</li>
+<li>$P^{a}_{ss^{‘}} = \mathbb{P}[S_{t+1}=s^{‘}|S_{t}=s, A_{t} = a]$</li>
+<li>$R_{s}^{a} = \mathbb{E}[R_{t+1}|S_{t}=s, A_{t} = a]$</li>
+</ul>
+</li>
+</ul>
+<h2 id="强化学习分类"><a href="#强化学习分类" class="headerlink" title="强化学习分类"></a>强化学习分类</h2><ul>
+<li>Value Based<ul>
+<li>No Policy</li>
+<li>Value Function</li>
+<li>策略函数由价值函数间接得到</li>
+</ul>
+</li>
+<li>Policy Based<ul>
+<li>No Value Function</li>
+<li>策略直接产生行为</li>
+</ul>
+</li>
+<li>Actor Critic<ul>
+<li>Policy</li>
+<li>Value Function</li>
+</ul>
+</li>
+</ul>
+<p>或者：</p>
+<ul>
+<li>Model Free<ul>
+<li>Policy or / and Value Function</li>
+<li>个体不知道环境运行机制</li>
+</ul>
+</li>
+<li>Model Based <ul>
+<li>Policy or / and Value Function</li>
+<li>个体知道环境运行机制</li>
+</ul>
+</li>
+</ul>
+<h2 id="学习和规划"><a href="#学习和规划" class="headerlink" title="学习和规划"></a>学习和规划</h2><ul>
+<li><p>Reinforcement Learning</p>
+<ul>
+<li>初始环境未知</li>
+<li>环境和个体相互作用</li>
+<li>逐渐改善个体行为</li>
+</ul>
+</li>
+<li><p>Planing</p>
+<ul>
+<li>环境的Model已知</li>
+<li>个体不与环境交互，而是通过和模型的交互来改善策略</li>
+</ul>
+</li>
+</ul>
+<h2 id="探索和利用"><a href="#探索和利用" class="headerlink" title="探索和利用"></a>探索和利用</h2><ul>
+<li><p>Exploration</p>
+<ul>
+<li>不断试错发现更好的策略</li>
+<li>且不在试错过程中丢失太多的奖励</li>
+</ul>
+</li>
+<li><p>Exploitation</p>
+<ul>
+<li>探索过程中发现了许多环境的信息</li>
+<li>利用信息去寻找最大的奖励</li>
+<li>平衡探索和利用非常重要</li>
+</ul>
+</li>
+</ul>
+<h2 id="预测和控制"><a href="#预测和控制" class="headerlink" title="预测和控制"></a>预测和控制</h2><ul>
+<li><p>Prediction</p>
+<ul>
+<li>通过给予的策略估计未来</li>
+<li>给定策略下求解价值函数的过程</li>
+</ul>
+</li>
+<li><p>Control</p>
+<ul>
+<li>寻找最优策略来最大化未来的奖励</li>
+</ul>
+</li>
+</ul>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2018/06/10/Policy-Based-RL/">
+        Policy-Based RL →
+    </a>
+    
+</nav>
+
+        <div class="share"><div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div></div>
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2018/06/10/Elementary Reinforcement Learning/" data-title="Elementary Reinforcement Learning" data-url="http://www.tracy-rm.com/2018/06/10/Elementary Reinforcement Learning/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"tracy-rm"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
+
+
       
 <!-- ============================ Footer =========================== -->
 

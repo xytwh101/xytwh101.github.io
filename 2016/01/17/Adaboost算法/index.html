@@ -118,6 +118,8 @@
 				  	
 				    <li><a href="/categories/ML/" class="animsition-link">ML<small>(9)</small></a></li>
 				    
+				    <li><a href="/categories/RL/" class="animsition-link">RL<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/paintings/" class="animsition-link">paintings<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/基础算法/" class="animsition-link">基础算法<small>(1)</small></a></li>
@@ -230,7 +232,7 @@
     bestStump,error,classEst = buildStump(dataArr,classLabels,D)#build Stump
     #print &quot;D:&quot;,D.T
     alpha = float(0.5*log((1.0-error)/max(error,1e-16)))#分类器的权重calc alpha, throw in max(error,eps) to account for error=0
-    bestStump[&apos;alpha&apos;] = alpha  
+    bestStump[&#39;alpha&#39;] = alpha  
     weakClassArr.append(bestStump)                  #store Stump Params in Array
     #print &quot;classEst: &quot;,classEst.T
     expon = multiply(-1*alpha*mat(classLabels).T,classEst) #exponent for D calc, getting messy

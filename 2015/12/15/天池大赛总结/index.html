@@ -118,6 +118,8 @@
 				  	
 				    <li><a href="/categories/ML/" class="animsition-link">ML<small>(9)</small></a></li>
 				    
+				    <li><a href="/categories/RL/" class="animsition-link">RL<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/paintings/" class="animsition-link">paintings<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/基础算法/" class="animsition-link">基础算法<small>(1)</small></a></li>
@@ -222,7 +224,7 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>总结一下刚结束的天池大赛–市民出行公交线路选乘预测。</p>
+      		<p>总结一下刚结束的天池大赛—市民出行公交线路选乘预测。</p>
 <ul>
 <li>主要收获<br>熟悉了并熟练使用Hive sql<br>将吴恩达课堂上的知识运用了一些<br>跑了几百亿条数据<br>使用了逻辑回归，线性核函数的SVM以及二分类的GBDT<a id="more"></a></li>
 <li><p>Hive sql<br>首先谈谈hql，阿里很聪明，将这么一个玩大数据必备的东西放在了某云上，方便了不少砸锅卖铁也只能搞几台奔腾配大头显示器的有梦想的屌丝。ODPS sql是平台原生的语言，基本和hql一致，但是更加简化。比如表不存在分区，新建一个表直接select as 就行不必要再去重新定义字段并添加分区，省了不少人力。<br>并且hql提供了非常多的内置函数，参加比赛的过程中经常使用日期函数和字符串处理的函数，熟悉之后比起写mapreduce要方便不少。<br>但也存在一些很憋手的地方，比如select了多少个字段，都后面group by就得写几个字段，最后只能嵌套一遍才能得到想要的结果。<br>前期刚开始学习的时候，想做一个mxn的矩阵着实是擦破头皮，hql不允许使用笛卡尔积，因为计算量太大怕承受不了。不过多谢川哥和婷姐的帮助，通过给每个表添加一个值为1的字段再使用full join就可以实现了。<br>现阶段hql提取一个数据已经不是问题，希望以后能自己写点udf磨练磨练。</p>
