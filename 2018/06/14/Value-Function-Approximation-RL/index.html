@@ -243,7 +243,7 @@
 </ul>
 <script type="math/tex; mode=display">\hat{v}(s, \omega) \approx v_{\pi}(s)</script><p>or</p>
 <script type="math/tex; mode=display">\hat{q}(s, a, \omega) \approx q_{\pi}(s, a)</script><ul>
-<li>学习一直状态并泛化到位置状态中</li>
+<li>学习已知状态并泛化到未知状态中</li>
 <li>通过MC或者TD方法更新参数 $\omega$</li>
 </ul>
 <h4 id="近似函数类型"><a href="#近似函数类型" class="headerlink" title="近似函数类型"></a>近似函数类型</h4><p>三种类型</p>
@@ -253,7 +253,7 @@
 <li><p>针对状态行为对，输出状态行为对的近视价值</p>
 <script type="math/tex; mode=display">s, a \rightarrow \omega \rightarrow \hat{q}(s, a, \omega)</script></li>
 <li><p>针对状态，输出所有可能的行为组成的状态行为对向量</p>
-<script type="math/tex; mode=display">s \rightarrow \omega \rightarrow \hat{q}(s, a_{1}, \omega) ... \hat{q}(s, a_{m}, \omega)</script></li>
+<script type="math/tex; mode=display">s \rightarrow \omega \rightarrow \hat{q}(s, a_{1}, \omega)  ,...,  \hat{q}(s, a_{m}, \omega)</script></li>
 </ul>
 <h2 id="价值函数逼近"><a href="#价值函数逼近" class="headerlink" title="价值函数逼近"></a>价值函数逼近</h2><p>常用函数逼近方法</p>
 <ul>
@@ -271,8 +271,8 @@
 <h4 id="状态函数逼近（随机梯度下降）"><a href="#状态函数逼近（随机梯度下降）" class="headerlink" title="状态函数逼近（随机梯度下降）"></a>状态函数逼近（随机梯度下降）</h4><p>找到参数向量$\omega$，最小化状态价值估计的误差：</p>
 <script type="math/tex; mode=display">J(\omega) = \mathbb{E}[(v_{\pi}(S)-\hat{v}(S, \omega))^{2}]</script><p>更新方法：</p>
 <script type="math/tex; mode=display">\Delta \omega = \alpha (v_{\pi}(S)-\hat{v}(S, \omega))\bigtriangledown_{\omega}\hat{v}(S, \omega)</script><h4 id="线性函数逼近"><a href="#线性函数逼近" class="headerlink" title="线性函数逼近"></a>线性函数逼近</h4><p>使用了梯度下降的线性近似函数逼近，具体形式介绍：</p>
-<p>特征向量：</p>
-<script type="math/tex; mode=display">x(S) = (x_{1}(S), ... , x_{n}(S))</script><p>对特征求和来近视价值函数：</p>
+<p>状态特征向量：</p>
+<script type="math/tex; mode=display">x(S) = (x_{1}(S), ... , x_{n}(S))</script><p>对特征求和来近似价值函数：</p>
 <script type="math/tex; mode=display">\hat{v}(S, \omega) = x(S)^{\top}\omega = \sum_{j=1}^{n}x_{j}(S)\omega_{j}</script><p>目标函数：</p>
 <script type="math/tex; mode=display">J(\omega) = \mathbb{E}[(v_{\pi}(S)-x(S)^{\top}\omega)^{2}]</script><p>更新方法：</p>
 <script type="math/tex; mode=display">\Delta \omega = \alpha (v_{\pi}(S)-\hat{v}(S, \omega))x(S)</script><p>Updata = step-size <em> prediction error </em> feature value</p>
@@ -314,12 +314,24 @@
 <li>依据$\epsilon-greedy$策略采取action</li>
 <li>将产生的经历$(s_t,a_t,r_{t+1},s_{t+1})$储存在memory D中</li>
 <li>从D中随机抽样mini-batch块经历作为训练数据</li>
-<li>维护两个神经网络DQN1，DQN2，一个网络固定参数专门用来产生目标值，目标值相当于标签数据。另一个网络专门用来评估策略，更新参数。</li>
+<li>维护两个神经网络Eval-net、Target-net，一个网络固定参数专门用来产生目标值，目标值相当于标签数据。另一个网络专门用来评估策略，更新参数。</li>
 <li>优化关于Q网络和Q目标值之间的最小平方差。</li>
 <li>用随机梯度下降的方式更新参数。</li>
 </ul>
+<p><img src="https://morvanzhou.github.io/static/results/ML-intro/DQN5.png" alt="img"></p>
+<p>更新步骤：</p>
+<p><img src="https://morvanzhou.github.io/static/results/reinforcement-learning/4-1-1.jpg" alt="img"></p>
+<p>Eval-net的更新：</p>
+<ul>
+<li>初始化参数、神经网络</li>
+<li>存储记忆D</li>
+<li>依据$\epsilon$贪婪选择action</li>
+<li>计算出预测值和目标值</li>
+<li>选取mini-batch数据块计算梯度</li>
+<li>更新参数</li>
+</ul>
 <p>优势：</p>
-<p>target-net暂时冻结了参数更新，并将输出作为val-net的目标值，有利于算法的稳定性。一段经历后，target-net的参数会被val-net覆盖，并循环这种训练方式。</p>
+<p>Target-net暂时冻结了参数更新，并将输出作为Eval-net的目标值，有利于算法的稳定性。一段经历后，Target-net的参数会被Eval-net覆盖，并循环这种训练方式。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
