@@ -304,7 +304,23 @@
 <script type="math/tex; mode=display">\Delta \omega = \alpha(R_{t+1}+\gamma \hat{q}(S_{t+1},A_{t+1},\omega)-\hat{q}(S_{t},A_{t+1},\omega))\bigtriangledown_{\omega}\hat{q}(S_{t},A_{t},\omega)</script><ul>
 <li>对于TD($\lambda$)，目标是$\lambda$-return $G_{t}^{\lambda}$</li>
 </ul>
-<script type="math/tex; mode=display">\Delta \omega = \alpha(G_{t}^{\lambda}-\hat{q}(S_{t},A_{t},\omega))\bigtriangledown_{\omega}(S_{t},A_{t},\omega)</script>
+<script type="math/tex; mode=display">\Delta \omega = \alpha(G_{t}^{\lambda}-\hat{q}(S_{t},A_{t},\omega))\bigtriangledown_{\omega}(S_{t},A_{t},\omega)</script><h2 id="批方法"><a href="#批方法" class="headerlink" title="批方法"></a>批方法</h2><p>随机梯度下降简单但是不够高效，使用批方法可以最优的拟合价值函数。</p>
+<p>价值逼近函数$\hat{v} \approx v_{\pi}(s)$<br>一段时间的经历</p>
+<script type="math/tex; mode=display">D = {<S_{1},V_{1}^{\pi}>,...,<S_{T},V_{T}^{\pi}>}</script><p>最小平方差算法要求找到参数$\omega$，使得下式值最小：</p>
+<script type="math/tex; mode=display">LS(\omega) = \sum_{t=1}^{T}(v_{t}^{\pi}-\hat{v}(s_{t},\omega))^{2}</script><script type="math/tex; mode=display">=\mathbb{E}_{D}[(v^{\pi}-\hat{v}(s,\omega))^2]</script><h4 id="经验回放下的随机梯度下降"><a href="#经验回放下的随机梯度下降" class="headerlink" title="经验回放下的随机梯度下降"></a>经验回放下的随机梯度下降</h4><p>积累一段时间的经历，分块使用梯度下降学习该段时间的经历</p>
+<script type="math/tex; mode=display">\Delta \omega = \alpha(v^\pi-\hat{v}(s,\omega))\bigtriangledown \omega \hat{v}(s, \omega)</script><p>寻找平方差最小化的参数$\omega$</p>
+<script type="math/tex; mode=display">\omega^\pi = \underset{\omega}{argmin} LS(\omega)</script><h2 id="DQN"><a href="#DQN" class="headerlink" title="DQN"></a>DQN</h2><p>TD方法结合非线性的神经网络函数近似可能不会收敛，但DQN(Deep Q-Networks)经历重现和固定的Q目标值能做到收敛。<br>DQN有以下特点：</p>
+<ul>
+<li>依据$\epsilon-greedy$策略采取action</li>
+<li>将产生的经历$(s_t,a_t,r_{t+1},s_{t+1})$储存在memory D中</li>
+<li>从D中随机抽样mini-batch块经历作为训练数据</li>
+<li>维护两个神经网络DQN1，DQN2，一个网络固定参数专门用来产生目标值，目标值相当于标签数据。另一个网络专门用来评估策略，更新参数。</li>
+<li>优化关于Q网络和Q目标值之间的最小平方差。</li>
+<li>用随机梯度下降的方式更新参数。</li>
+</ul>
+<p>优势：</p>
+<p>target-net暂时冻结了参数更新，并将输出作为val-net的目标值，有利于算法的稳定性。一段经历后，target-net的参数会被val-net覆盖，并循环这种训练方式。</p>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
